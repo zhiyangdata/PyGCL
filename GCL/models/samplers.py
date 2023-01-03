@@ -21,10 +21,15 @@ class Sampler(ABC):
     def add_intraview_negs(anchor, sample, pos_mask, neg_mask):
         num_nodes = anchor.size(0)
         device = anchor.device
+        # 全0矩阵
         intraview_pos_mask = torch.zeros_like(pos_mask, device=device)
+        # 对角为1 ，其余全为0的矩阵
         intraview_neg_mask = torch.ones_like(pos_mask, device=device) - torch.eye(num_nodes, device=device)
         new_sample = torch.cat([sample, anchor], dim=0)                     # (M+N) * K
+        # 前半部分为单位阵，后半部分为全0阵
         new_pos_mask = torch.cat([pos_mask, intraview_pos_mask], dim=1)     # M * (M+N)
+
+        #
         new_neg_mask = torch.cat([neg_mask, intraview_neg_mask], dim=1)     # M * (M+N)
         return anchor, new_sample, new_pos_mask, new_neg_mask
 
@@ -37,6 +42,7 @@ class SameScaleSampler(Sampler):
         assert anchor.size(0) == sample.size(0)
         num_nodes = anchor.size(0)
         device = anchor.device
+        # 生成维度为节点数的单位阵
         pos_mask = torch.eye(num_nodes, dtype=torch.float32, device=device)
         neg_mask = 1. - pos_mask
         return anchor, sample, pos_mask, neg_mask

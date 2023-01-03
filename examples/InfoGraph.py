@@ -130,8 +130,8 @@ def main():
 
     optimizer = Adam(encoder_model.parameters(), lr=0.01)
 
-    with tqdm(total=100, desc='(T)') as pbar:
-        for epoch in range(1, 101):
+    with tqdm(total=1000, desc='(T)') as pbar:
+        for epoch in range(1, 1001):
             loss = train(encoder_model, contrast_model, dataloader, optimizer)
             pbar.set_postfix({'loss': loss})
             pbar.update()

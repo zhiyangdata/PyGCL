@@ -1,6 +1,6 @@
 from .jsd import JSD, DebiasedJSD, HardnessJSD
 from .vicreg import VICReg
-from .infonce import InfoNCE, InfoNCESP, DebiasedInfoNCE, HardnessInfoNCE
+from .infonce import InfoNCE, InfoNCESP, DebiasedInfoNCE, HardnessInfoNCE, HardMixingLoss, RingLoss
 from .triplet import TripletMargin, TripletMarginSP
 from .bootstrap import BootstrapLatent
 from .barlow_twins import BarlowTwins
@@ -18,7 +18,10 @@ __all__ = [
     'TripletMargin',
     'TripletMarginSP',
     'VICReg',
-    'BarlowTwins'
+    'BarlowTwins',
+    'HardMixingLoss',
+    'RingLoss',
+    'DynamicLoss'
 ]
 
 classes = __all__
