@@ -1,10 +1,10 @@
-from .jsd import JSD, DebiasedJSD, HardnessJSD
-from .vicreg import VICReg
-from .infonce import InfoNCE, InfoNCESP, DebiasedInfoNCE, HardnessInfoNCE, HardMixingLoss, RingLoss
-from .triplet import TripletMargin, TripletMarginSP
-from .bootstrap import BootstrapLatent
 from .barlow_twins import BarlowTwins
+from .bootstrap import BootstrapLatent
+from .infonce import InfoNCE, InfoNCESP, DebiasedInfoNCE, HardnessInfoNCE, HardMixingLoss, RingLoss, DynamicLoss
+from .jsd import JSD, DebiasedJSD, HardnessJSD
 from .losses import Loss
+from .triplet import TripletMargin, TripletMarginSP
+from .vicreg import VICReg
 
 __all__ = [
     'Loss',
